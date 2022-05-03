@@ -1,38 +1,254 @@
-.App {
-  text-align: center;
+* {
+  margin: 0;
+  font-family: "Tajawal", sans-serif;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.app {
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+  height: 100vh;
+  background-color: #020230;
   color: white;
 }
 
-.App-link {
-  color: #61dafb;
+.main {
+  width: 75%;
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0), #020230),
+    url("./assets/bg.jpg") center;
+  display: flex;
+  flex-direction: column;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+.main .stop {
+  margin: auto;
+  letter-spacing: 1px;
+}
+
+.main .top {
+  position: relative;
+  height: 50%;
+}
+
+.main .top .timer {
+  height: 70px;
+  width: 70px;
+  border-radius: 50%;
+  border: 4px solid #fff;
+  display: flex;
+  font-size: 30px;
+  font-weight: bold;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  bottom: 10px;
+  left: 80px;
+}
+
+.main .bottom {
+  height: 50%;
+}
+
+.quiz {
+  display: flex;
+  height: 100%;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.quiz .question {
+  width: 80%;
+  background-color: black;
+  border: 2px solid white;
+  text-align: center;
+  border-radius: 5px;
+  padding: 10px;
+  font-size: 20px;
+  background: linear-gradient(#100241, black);
+}
+
+.quiz .answers {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  text-align: right;
+  flex-wrap: wrap;
+}
+
+.quiz .answer {
+  width: 40%;
+  background: linear-gradient(#0e0124, #22074d);
+  padding: 10px 0;
+  border: 1px solid #fff;
+  border-radius: 16px;
+  font-weight: 300;
+  font-size: 24px;
+  margin: 0 10px 15px 15px;
+  cursor: pointer;
+  padding-right: 20px;
+}
+
+.quiz .answer.active {
+  background: mediumblue;
+}
+
+.quiz .answer.correct {
+  animation: correct 3s ease forwards;
+}
+
+@keyframes correct {
+  0%,
+  22%,
+  42% {
+    background: mediumblue;
   }
-  to {
-    transform: rotate(360deg);
+  20%,
+  40%,
+  60% {
+    background: linear-gradient(#0e0124, #22074d);
+  }
+  62%,
+  100% {
+    background: green;
+  }
+}
+
+.quiz .answer.wrong {
+  animation: wrong 3s ease forwards;
+}
+
+@keyframes wrong {
+  0%,
+  22%,
+  42% {
+    background: mediumblue;
+  }
+  20%,
+  40%,
+  60% {
+    background: linear-gradient(#0e0124, #22074d);
+  }
+  62%,
+  100% {
+    background: crimson;
+  }
+}
+
+.pryamid {
+  width: 25%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.pryamid ul {
+  list-style: none;
+  padding: 20px;
+  width: 100%;
+}
+
+.pryamid ul .item {
+  display: flex;
+  align-items: center;
+  border-radius: 5px;
+  padding: 5px;
+}
+.pryamid ul .item.active {
+  background-color: teal;
+}
+
+.pryamid ul .item span:first-child {
+  font-size: 18px;
+  font-weight: 100;
+  width: 30%;
+}
+
+.pryamid ul .item span:last-child {
+  font-size: 20px;
+  font-weight: 300;
+}
+
+.start {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  margin: auto;
+}
+
+.start input {
+  padding: 7px 10px;
+  border-radius: 4px;
+  border: none;
+  font-size: 17px;
+}
+
+.start input:focus {
+  outline: none;
+}
+
+.start button {
+  width: 100%;
+  margin: 5px 0;
+  cursor: pointer;
+  font-size: 20px;
+}
+
+.winner {
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: auto;
+  background-color: #020230;
+  padding: 10px;
+  border-radius: 10px;
+  font-size: 23px;
+}
+
+.logout {
+  display: flex;
+  cursor: pointer;
+  position: absolute;
+  right: 5px;
+  top: 4px;
+  border: none;
+  font-size: 15px;
+  background-color: #020230;
+  color: white;
+}
+@media (max-width: 650px) {
+  .pryamid ul {
+    margin: 0px;
+    padding: 6px;
+  }
+  .pryamid ul .item span:first-child {
+    font-size: 14px;
+  }
+  .pryamid ul .item span:last-child {
+    font-size: 13px;
+  }
+
+  .quiz .question {
+    font-size: 13px;
+  }
+
+  .quiz .answer {
+    font-size: 15px;
+    width: 80%;
+  }
+  .main .top .timer {
+    left: 30px;
+  }
+  /*  */
+  .stop {
+    font-size: 14px;
+  }
+  .main .top .timer {
+    height: 45px;
+    width: 45px;
+    font-size: 22px;
+  }
+  .main .top {
+    height: 30%;
   }
 }
